@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+
+<script>
+	const obj = {b: 1, c: 2, d: 3};
+	let a, b, c;
+	
+	// 에러가 일어남 
+	//{a, b, c} = obj;
+	
+	// 동작함
+	({a, b, c} = obj);
+	
+	console.log(a);
+	console.log(b);
+	console.log(c);
+	
+	/* 
+		객체 해제는 할당만으로 이뤄질 수도 있지만, 그렇게 하려면 반드시 괄호를 써야
+	*/
+	
+	
+	// 배열 선언
+	const arr = [1, 2, 3];
+	
+	// 배열 해체 할당 
+	let [x, y] = arr;
+	x;	// 1
+	y; 	// 2
+	//z; 	// ReferenceError : "2"는 정의되지 않았음 
+	
+	console.log(x);
+	console.log(y);
+	
+	/* 
+		배열을 해체할 때는 배열 요소에 대응할 변수 이름을 마음대로 쓸 수 있으며 이들은 배열 순서대로 대응
+		x는 배열의 첫번째 요소 값을, y는 두번째 요소 값을 할당
+		그 뒤의 배열 요소는 모두 버려짐
+	*/
+	
+</script>
+</html>
