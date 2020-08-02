@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+
+<script>
+	function getGreeting(){
+		return "Hello world!";
+	}
+	
+	/* 
+		함수 호출
+		함수 식별자 뒤에 괄호를 쓰면 함수 호출, 함수 바디 실행
+		괄호를 쓰지 않으면 다른 값과 마찬가지로 함수를 참조하는 것, 함수는 실행되지 않음 
+	*/
+	getGreeting();	// "Hello world!"
+	getGreeting; 	// function getGreeting()
+	
+	
+	const f = getGreeting;
+	f(); 	// "Hello world!"
+	
+	/* 함수를 객체 프로퍼티에 할당할 수 있음 */
+	const o = {};
+	o.f = getGreeting;
+	o.f(); 	// "Hello world!"
+	
+	
+	/* 배열 요소로 할당 할 수 있음 */
+	const arr = [1, 2, 3];
+	arr[1] = getGreeting; 	// arr은 이제 [1, function getGreeting(), 3] 
+	arr[1]();				// Hello world!
+	console.log(arr);
+	
+</script>
+
+</html>
