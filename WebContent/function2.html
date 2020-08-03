@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+<script>
+	/* 매개변수 해제 */
+	
+	// 객체 
+	function getSentence({ subject, verb, object }) {
+		return subject+" "+verb+" "+object;
+	}
+	
+	const o = {
+			subject : "I",
+			verb 	: "love",
+			object : "JavaScript",
+	};
+
+	getSentence(o); 	// "I love JavaScript"
+
+	
+	// 배열 
+	function getSentence_arr([subject, verb, object]){
+		return subject+" "+verb+" "+object;
+	}
+	
+	const arr = ["I", "love", "JavaScript"];
+	
+	getSentence_arr(arr);	// "I love JavaScript"
+	
+	
+	
+	// 확산 연산자(...)
+	function addPrefix(prefix, ...words){
+		// 뒤에 더 좋은 방법 있음
+		const prefixedWords = [];
+		for(let i=0; i<words.length; i++){
+			prefixedWords[i] = prefix + words[i];
+		}
+		return prefixedWords;
+	}
+	
+	addPrefix("con ", "verse ", "vex "); //["con verse", "con vex"] 
+	
+</script>
+
+</html>
