@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+</body>
+
+<script>
+	/* 
+		자바스크립트에서는 this를 함수 어디서, 어떻게 호출했느냐와 관계없이 this가 무엇인지 지정할 수 있음
+		
+		call메서드 : 모든 함수에서 사용할 수 있으며, this를 특정 값으로 지정할 수 있다.
+	*/
+	const bruce = {name : "Bruce"};
+	const madeline = {name : "Madeline"};
+	
+	//이 함수는 어떤 객체에도 연결되지 않았지만 this를 사용함
+	function greet(){
+		return `Hello, I am ${this.name}!`;
+	}
+	greet();			// "Hello, I am undefined!"	- this는 어디에도 묶이지 않았음
+	greet.call(bruce);	// "Hello, I am Bruce!"		- this는 bruce
+	greet.call(madeline)// "Hello, I am Madeline!"	- this는 madeline 
+	
+	/* 
+		함수를 호출하면 call을 사용하고 this로 사용할 객체를 넘기면 해당 함수가 주어진 객채의 메서드인 것처럼 사용할 수 있다.
+		
+	*/
+</script>
+
+</html>

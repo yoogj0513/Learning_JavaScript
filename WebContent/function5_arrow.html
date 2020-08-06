@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+
+<script>
+	/* 
+		ES6에서 새로 만든 화살표 표기법
+		function이라는 단어와 중괄호 숫자를 줄이려고 고안된 단축 문법
+		
+		화살표 함수의 세가지 단축 문법 
+		* function을 생략
+		* 함수에 매개변수가 단 하나 뿐이라면 괄호 생략
+		* 함수 바디가 표현식 하나라면 중괄호와 return 문도 생략
+		
+		화살표 함수는 항상 익명 
+	*/
+	
+	
+	const f1 = function() {return "hello!";}
+	const f1_1 = () => "hello!";
+	
+	const f2 = function(name) {return `Hello, ${name}!`;}
+	const f2_1 = name => `Hello, ${name}!`;
+	
+	const f3 = function(a, b) {return a+b};
+	const f3_1 = (a, b) => a+b;
+	
+	
+	/* 
+		화살표 함수는 익명 함수를 만들어 다른 곳에 전달하려 할 때 가장 유
+	
+		화살표 함수는 일반적인 함수와 중요한 차이
+		- this가 다른 변수와 마찬가지로 정적으로 묶인다는 것 
+		- 객체 생성자로 사용할 수 없다.
+		- arguments 변수도 사용할 수 없다.(확산 연산자가 생겨 arguments 변수가 필요없음)
+	*/
+	
+	const o = {
+			name : 'Julie'
+			,greetBackwrads : function(){
+				const getReverseName = () => {
+					let nameBackwards = '';
+					for(let i=this.name.lenght-1; i>=0; i--){
+						nameBackwards += this.name[i];
+					}
+					return nameBackwards;
+				};
+				return `${getReverseName()} si eman ym ,olleH`;
+			}
+	};
+	
+	o.greetBackwrads();
+</script>
+
+</html>
