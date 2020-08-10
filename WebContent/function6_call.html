@@ -26,8 +26,19 @@
 	
 	/* 
 		함수를 호출하면 call을 사용하고 this로 사용할 객체를 넘기면 해당 함수가 주어진 객채의 메서드인 것처럼 사용할 수 있다.
-		
 	*/
+	
+	function update(birthYear, occupation) {
+		this.birthYear = birthYear;
+		this.occupation = occupation;
+		return `${this.name} ${this.birthYear} ${this.occupation}`;
+	}
+	
+	update.call(bruce, 1949, 'singer');
+	// bruce는 이제 {name: "Bruce", birtyYear: 1949, occupation: "singer"} 입니다.
+	
+	update.call(madeline, 1942, 'actress');
+	// madeline은 이제 {name: "Madeline", birthYear: 1942, occupation: "actress"}입니다.
 </script>
 
 </html>
