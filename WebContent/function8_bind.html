@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+</body>
+
+<script>
+	/* <this의 값을 바꿀 수 있는 함수> - call, apply, bind */
+
+	const bruce = {name : "Bruce"};
+	const madeline = {name : "Madeline"};
+	
+	function update(birthYear, occupation) {
+		this.birthYear = birthYear;
+		this.occupation = occupation;
+		return `${this.name} ${this.birthYear} ${this.occupation}`;
+	}
+	
+	/* 
+		bind 
+		- 함수의 this 값을 영구히 바꿀 수 있음
+		
+		예. update 메서드를 이리저리 옮기면서도 호출할 때 this값은 항상 bruce가 되게끔, call이나 apply, 다른 bind와 함께 호출하더라도 this값이
+		bruce가 되도록 하려면 bind를 사용함
+	*/
+
+	const updateBruce = update.bind(bruce);
+	
+	updateBruce(1904, "actor");
+	// bruce는 이제 {name: "Bruce", birthYear: 1904, occupation: "actor"}
+	updateBruce.call(madeline, 1274, "king");
+	// bruce는 이제 {name: "Bruce", birthYear: 1274, occupation: "king"}
+	
+	/* 
+		bind는 함수의 동작을 영구적으로 바꾸므로 찾기 어려운 버그의 원인이 될 수 있다.
+		함수의 this가 어디에 묶이는지 정확히 파악하고 사용해야함
+		
+		bind에 매개변수를 넘기면 항상 그 매개변수를 받으면서 호출되는 새 함수를 만드는 효과가 있다.
+		예. bruce가 태어난 해를 항상 1949로 고정하지만, 직업은 자유롭게 바꿀 수 있는 업데이트 함수를 만들고 싶을 때
+	*/
+	const updateBruce1949 = update.bind(bruce, 1949);
+	updateBruce1949("singer, songwriter");
+	// bruce는 이제 {name: "Bruce", birthYear: 1949, occupation: "singer, songwriter"}
+</script>
+
+</html>

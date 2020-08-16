@@ -9,10 +9,49 @@
 </body>
 
 <script>
+	/* <this의 값을 바꿀 수 있는 함수> - call, apply, bind */
+
+	const bruce = {name : "Bruce"};
+	const madeline = {name : "Madeline"};
+
+	function update(birthYear, occupation) {
+		this.birthYear = birthYear;
+		this.occupation = occupation;
+		return `${this.name} ${this.birthYear} ${this.occupation}`;
+	}
+
 	/* 
 		apply
 		- 함수 매개변수를 처리하는 방법을 제외하면 call과 완전 같음
 		- call은 함수와 마찬가지로 매개변수를 직접 받지만 apply는 매개변수를 배열로 받음
 	*/
+	update.apply(bruce, [1955, "actor"]);
+	// bruce는 이제 {name: "Bruce", birthYear: 1955, occuption: "actor"}
+	
+	update.apply(madeline, [1918, "writer"]);
+	// madiline은 이제 {name: "Madeline", brithYear: 1918, "writer"}
+	
+	
+	/* 
+		apply는 배열 요소를 함수 매개변수로 사용해야 할 때 유용
+		apply를 설명할때 흔히 사용하는 예제는 배열의 최솟값과 최댓값으 구하는 것
+		자바스크립트의 내장 함수인 Math.min과 Math.max는 매개변수를 받아 최솟값과 최대값을 각각 반환
+		this의 값에 null을 쓴 이뉴는 Math.min과 Math.max가 this와 관계없이 동작하기 때문
+	*/
+	const arr = [2, 3, -5, 15, 7];
+	var min = Math.min.apply(null, arr);
+	var max = Math.max.apply(null, arr);
+	
+	console.log(min);
+	console.log(max);
+	
+	/* 
+		ES6의 확산연산자(...)를 사용해도 apply와 같은 결과를 얻을 수 있다.
+	*/
+	const newBruce = [1940, "martial artist"];
+	update.call(bruce, ...newBruce); // apply(bruce, newBruce)와 같음
+	Math.min(...arr);
+	Math.max(...arr);
+	
 </script>
 </html>
